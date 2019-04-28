@@ -1,0 +1,36 @@
+The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts.
+Linux shells – Use common shell programs such as bash, zsh, and tsch to run commands in Linux, macOS, or Unix.
+Windows command line – On Windows, run commands in PowerShell or at the Windows command prompt.
+Remotely – Run commands on Amazon Elastic Compute Cloud (Amazon EC2) instances through a remote terminal such as PuTTY or SSH, or with AWS Systems Manager.
+
+#Install AWS CLI
+Prerequisites
+Python 2 version 2.6.5+ or Python 3 version 3.3+
+Windows, Linux, macOS, or Unix
+
+Windows : https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi
+Linux or MacOs : pip install awscli 
+
+#Configure AWS CLI
+The AWS CLI uses a set of credential providers to look for AWS credentials. Each credential provider looks for credentials in a different place, such as the system or user environment variables, local AWS configuration files, or explicitly declared on the command line as a parameter. 
+The AWS CLI looks for credentials and configuration settings by invoking the providers in the following order, stopping when it finds a set of credentials to use:
+1. Command line options 
+2. Environment variables 
+3. The CLI credentials file 
+4. The CLI configuration file 
+5. Container credentials 
+6. Instance profile credentials
+
+#Configuration and Credential Files
+You can save your frequently used configuration settings and credentials in files that are maintained by the AWS CLI. The files are divided into sections that can be referenced by name. These are called "profiles". Unless you specify otherwise, the CLI uses the settings found in the profile named default. To use alternate settings, you can create and reference additional profiles. You can also override an individual setting by either setting one of the supported environment variables, or by using a command line parameter.
+The AWS CLI stores the credentials that you specify with aws configure in a local file named credentials, in a folder named .aws in your home directory. The other configuration options that you specify with aws configure are stored in a local file named config, also stored in the .aws folder in your home directory.
+Linux or MacOS : $ ls  ~/.aws
+Windows : C:\> dir "%UserProfile%\.aws"
+
+#Named Profile 
+The AWS CLI supports using any of multiple named profiles that are stored in the config and credentials files. You can configure additional profiles by using aws configure with the --profile option, or by adding entries to the config and credentials files.
+Configure : $ aws configure --profile prod or stag
+Use : aws s3 ls --profile prod
+Set Default : $ export AWS_DEFAULT_PROFILE=stag
+
+
